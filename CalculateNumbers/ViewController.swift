@@ -48,9 +48,30 @@ class ViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        //button.layer.cornerRadius = 10
+        generateExample()
     }
 
-
+    func generateExample() -> String
+    {
+        let result: String
+        var firstNum, secondNum, sign: Int
+        sign = Int.random(in: 0...1)
+        if sign == 1
+        {
+            //сложение
+            firstNum = Int.random(in: 0...100)
+            secondNum = Int.random(in: 0...100)
+            result = String(firstNum) + " + " + String(secondNum)
+        }
+        else
+        {
+            //вычитание
+            firstNum = Int.random(in: 0...100)
+            secondNum = Int.random(in: 0...firstNum)
+            result = String(firstNum) + " - " + String(secondNum)
+        }
+        print(result)
+        return result
+    }
 }
 
