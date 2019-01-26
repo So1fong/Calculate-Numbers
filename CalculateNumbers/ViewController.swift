@@ -44,19 +44,26 @@ class ViewController: UIViewController
 {
 
     @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var answerLabel: UILabel!
+    var typedAnswer: String = ""
+    var resultTuple: (String, Int, Int, Int) = ("", 0, 0, 0)
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        let example = generateExample().0
-        label.text = example
-        
+        fillLabels()
     }
 
-    func generateExample() -> (String, Int, Int, Int)
+    func fillLabels()
+    {
+        generateExample()
+        let example = resultTuple.0
+        label.text = example
+    }
+    
+    func generateExample()
     {
         let result: String
-        let resultTuple: (String, Int, Int, Int)
         var firstNum, secondNum, sign: Int
         sign = Int.random(in: 0...1)
         if sign == 1
@@ -76,67 +83,118 @@ class ViewController: UIViewController
         resultTuple = (result, firstNum, secondNum, sign)
         print(result)
         print(resultTuple)
-        return resultTuple
+    }
+    
+    func checkAnswer() -> Bool
+    {
+        var answer: Bool
+        var calculatedAnswer: Int = 0
+        
+        switch resultTuple.3
+        {
+        case 0:
+            calculatedAnswer = resultTuple.1 - resultTuple.2
+        case 1:
+            calculatedAnswer = resultTuple.1 + resultTuple.2
+        default:
+            print("Error")
+        }
+        
+        print("\(calculatedAnswer) calculated, \(typedAnswer) typed")
+        if calculatedAnswer == Int(typedAnswer)
+        {
+            answer = true
+        }
+        else
+        {
+            answer = false
+        }
+        print(answer)
+        return answer
     }
     
     @IBAction func button1action(_ sender: UIButton)
     {
-        
+        typedAnswer += "1"
+        answerLabel.text = typedAnswer
     }
     
     @IBAction func button2action(_ sender: UIButton)
     {
-        
+        typedAnswer += "2"
+        answerLabel.text = typedAnswer
     }
     
     @IBAction func button3action(_ sender: UIButton)
     {
-        
+        typedAnswer += "3"
+        answerLabel.text = typedAnswer
     }
     
     @IBAction func button4action(_ sender: UIButton)
     {
-        
+        typedAnswer += "4"
+        answerLabel.text = typedAnswer
     }
     
     @IBAction func button5acion(_ sender: UIButton)
     {
-        
+        typedAnswer += "5"
+        answerLabel.text = typedAnswer
     }
     
     @IBAction func button6action(_ sender: UIButton)
     {
-        
+        typedAnswer += "6"
+        answerLabel.text = typedAnswer
     }
     
     @IBAction func button7action(_ sender: UIButton)
     {
-        
+        typedAnswer += "7"
+        answerLabel.text = typedAnswer
     }
     
     @IBAction func button8action(_ sender: UIButton)
     {
-        
+        typedAnswer += "8"
+        answerLabel.text = typedAnswer
     }
     
     @IBAction func button9action(_ sender: UIButton)
     {
-        
+        typedAnswer += "9"
+        answerLabel.text = typedAnswer
     }
     
     @IBAction func button0action(_ sender: UIButton)
     {
-        
+        typedAnswer += "0"
+        answerLabel.text = typedAnswer
     }
     
     @IBAction func buttonDeleteAction(_ sender: UIButton)
     {
-        
+        if !typedAnswer.isEmpty
+        {
+            typedAnswer.removeLast()
+        }
+        answerLabel.text = typedAnswer
     }
     
     @IBAction func buttonCheckAction(_ sender: UIButton)
     {
-        
+        print(typedAnswer)
+        if checkAnswer()
+        {
+            fillLabels()
+            answerLabel.text?.append(" - верный ответ!")
+        }
+        else
+        {
+            answerLabel.text?.append(" - неверный ответ")
+        }
+        typedAnswer = ""
     }
     
     
