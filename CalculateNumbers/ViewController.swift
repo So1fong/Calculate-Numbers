@@ -43,17 +43,20 @@ import UIKit
 class ViewController: UIViewController
 {
 
-    @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var label: UILabel!
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        generateExample()
+        let example = generateExample().0
+        label.text = example
+        
     }
 
-    func generateExample() -> String
+    func generateExample() -> (String, Int, Int, Int)
     {
         let result: String
+        let resultTuple: (String, Int, Int, Int)
         var firstNum, secondNum, sign: Int
         sign = Int.random(in: 0...1)
         if sign == 1
@@ -70,8 +73,72 @@ class ViewController: UIViewController
             secondNum = Int.random(in: 0...firstNum)
             result = String(firstNum) + " - " + String(secondNum)
         }
+        resultTuple = (result, firstNum, secondNum, sign)
         print(result)
-        return result
+        print(resultTuple)
+        return resultTuple
     }
+    
+    @IBAction func button1action(_ sender: UIButton)
+    {
+        
+    }
+    
+    @IBAction func button2action(_ sender: UIButton)
+    {
+        
+    }
+    
+    @IBAction func button3action(_ sender: UIButton)
+    {
+        
+    }
+    
+    @IBAction func button4action(_ sender: UIButton)
+    {
+        
+    }
+    
+    @IBAction func button5acion(_ sender: UIButton)
+    {
+        
+    }
+    
+    @IBAction func button6action(_ sender: UIButton)
+    {
+        
+    }
+    
+    @IBAction func button7action(_ sender: UIButton)
+    {
+        
+    }
+    
+    @IBAction func button8action(_ sender: UIButton)
+    {
+        
+    }
+    
+    @IBAction func button9action(_ sender: UIButton)
+    {
+        
+    }
+    
+    @IBAction func button0action(_ sender: UIButton)
+    {
+        
+    }
+    
+    @IBAction func buttonDeleteAction(_ sender: UIButton)
+    {
+        
+    }
+    
+    @IBAction func buttonCheckAction(_ sender: UIButton)
+    {
+        
+    }
+    
+    
 }
 
