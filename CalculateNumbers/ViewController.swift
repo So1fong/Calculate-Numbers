@@ -192,11 +192,15 @@ class ViewController: UIViewController
         }
         else
         {
-            answerLabel.text?.append(" - неверный ответ")
+            if let wrongAnswer = answerLabel.text?.contains(" - неверный ответ")
+            {
+                if !wrongAnswer
+                {
+                    answerLabel.text?.append(" - неверный ответ")
+                }
+            }
         }
         typedAnswer = ""
     }
-    
-    
 }
 
